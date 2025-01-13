@@ -1,0 +1,57 @@
+        body {
+            font-family: serif; /* Изменен шрифт на serif */
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333; /* Черный цвет заголовка */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #fff; /* Белый цвет фона таблицы */
+            border-radius: 12px; /* Скругление краев таблицы */
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 5px;
+            text-align: center;
+            min-width: 50px; /* Установка минимальной ширины */
+        }
+        th {
+            background-color: #1abc9c; /* Мятный цвет */
+            color: #ffffff;
+        }
+        tr:hover {
+            background-color: #f1f1f1; /* Цвет при наведении */
+        }
+        .delete-link {
+            background-color: #dc3545; /* Красный цвет для удаления */
+        }
+        .delete-link:hover {
+            background-color: #c82333; /* Темный красный при наведении */
+        }
+        .alert {
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .alert-success {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+
+        .alert-danger {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+
+
+
+

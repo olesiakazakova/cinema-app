@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Список режиссеров</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<h1>Список режиссеров</h1>
+<table>
+  <thead>
+  <tr>
+    <th>ФИО</th>
+    <th>Действия</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="director : ${directors}">
+    <td th:text="${director.name}">ФИО</td>
+    <td>
+      <a th:href="@{/directors/edit(directorId=${director.directorId})}">Редактировать</a>
+      <form th:action="@{/directors/delete}" method="post" onsubmit="return confirm('Вы уверены, что хотите удалить этого режиссера?');">
+        <input type="hidden" name="directorId" th:value="${director.directorId}"/>
+        <input type="hidden" name="name" th:value="${director.name}"/>
+        <button type="submit">Удалить</button>
+      </form>
+
+    </td>
+  </tr>
+  <tr th:if="${#lists.isEmpty(directors)}">
+    <td colspan="2">Нет доступных режиссеров.</td>
+  </tr>
+  </tbody>
+</table>
+<a href="/directors/add">Добавить нового режиссера</a>
+<a href="/films">Вернуться к списку фильмов</a>
+</body>
+</html>
