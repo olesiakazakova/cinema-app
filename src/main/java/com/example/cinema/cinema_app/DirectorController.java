@@ -38,7 +38,8 @@ public class DirectorController {
             System.out.println("Ошибки валидации: " + bindingResult.getAllErrors());
             return "film/error";
         }
-        if (directorService.findByName(director.getName()) == null) directorService.saveDirector(director);
+        if (!directorService.findByName(director.getName()).isPresent())
+            directorService.saveDirector(director);
         return "redirect:/directors";
     }
 

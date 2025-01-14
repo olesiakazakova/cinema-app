@@ -17,7 +17,7 @@ public class Director {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "director", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "director", cascade = CascadeType.PERSIST)
     private List<FilmsDirectors> filmsDirectors;
 
     public Long getDirectorId() {

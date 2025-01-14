@@ -16,7 +16,7 @@ public class Actor {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "actor", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "actor", cascade = CascadeType.PERSIST)
     private List<FilmsActors> filmsActors;
 
     public Long getActorId() {

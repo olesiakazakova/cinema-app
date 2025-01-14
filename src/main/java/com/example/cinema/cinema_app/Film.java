@@ -27,7 +27,7 @@ public class Film {
     @Column(nullable = false)
     private Integer duration;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "films_genres",
             joinColumns = @JoinColumn(name = "film_id"),
@@ -35,7 +35,7 @@ public class Film {
     )
     private List<Genre> genres = new ArrayList<>();
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "films_directors",
             joinColumns = @JoinColumn(name = "film_id"),
@@ -43,7 +43,7 @@ public class Film {
     )
     private List<Director> directors = new ArrayList<>();
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "films_actors",
             joinColumns = @JoinColumn(name = "film_id"),

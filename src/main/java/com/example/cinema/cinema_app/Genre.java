@@ -18,7 +18,7 @@ Genre {
     @Column(nullable = false, unique = true)
     private String genre;
 
-    @OneToMany(mappedBy = "genre", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "genre", cascade = CascadeType.PERSIST)
     private List<FilmsGenres> filmsGenres;
 
     public Long getGenreId() {

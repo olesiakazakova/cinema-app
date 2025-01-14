@@ -38,7 +38,8 @@ public class ActorController {
             System.out.println("Ошибки валидации: " + bindingResult.getAllErrors());
             return "film/error";
         }
-        if (actorService.findByName(actor.getName()) == null) actorService.createActor(actor);
+        if (!actorService.findByName(actor.getName()).isPresent())
+            actorService.createActor(actor);
         return "redirect:/actors";
     }
 
