@@ -73,8 +73,9 @@ public class GenreController {
 
     @PostMapping("/delete")
     public String deleteGenre(@RequestParam Long genreId) {
-        Genre genre = genreService.getGenre(genreId).orElseThrow(() -> new RuntimeException("Genre not found"));
-        if (genre != null) {
+        Optional<Genre> optionalGenre = genreService.getGenre(genreId);
+        if (optionalGenre.isPresent()) {
+            Genre genre = optionalGenre.get();
             List<FilmsGenres> films = genre.getFilmsGenres();
             if (films!=null) {
                 for (FilmsGenres film: films) {
