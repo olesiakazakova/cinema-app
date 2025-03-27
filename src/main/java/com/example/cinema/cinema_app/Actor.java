@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity//этот класс является сущностью JPA, он будет отображаться на таблицу в базе данных.
+@Entity
 @Table(name = "actors")
 public class Actor {
     @Id

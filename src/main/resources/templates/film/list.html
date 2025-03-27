@@ -6,11 +6,17 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+<nav>
+    <a href="/films">Фильмы</a>
+    <a href="/sessions">Сеансы</a>
+    <a href="/tickets">Билеты</a>
+    <a href="/users">Пользователи</a>
+</nav>
 <div th:if="${successMessage}" class="alert alert-success" th:text="${successMessage}"></div>
 <div th:if="${errorMessage}" class="alert alert-danger" th:text="${errorMessage}"></div>
 
 <h1>Список Фильмов</h1>
-<a class="add-button" th:href="@{/films/add}">Добавить фильм</a> <!-- Кнопка добавления -->
+<a class="add-button" th:href="@{/films/add}">Добавить фильм</a>
 
 <table>
     <thead>

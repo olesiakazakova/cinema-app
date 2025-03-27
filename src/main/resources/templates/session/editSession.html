@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактировать сеанс</title>
+</head>
+<body>
+<nav>
+    <a href="/films">Фильмы</a>
+    <a href="/sessions">Сеансы</a>
+    <a href="/tickets">Билеты</a>
+    <a href="/users">Пользователи</a>
+</nav>
+<h1>Редактирование сеанса</h1>
+
+<form th:action="@{/sessions/update}" th:object="${session}" method="post">
+    <input type="hidden" th:field="*{sessionId}" />
+
+    <div>
+        <label for="film">Фильм:</label>
+        <select th:field="*{film}" id="film">
+            <option th:each="film : ${films}"
+                    th:value="${film.filmId}"
+                    th:text="${film.name}"
+                    th:selected="${session.film != null && film.filmId == session.film.filmId}"></option>
+        </select>
+    </div>
+
+    <div>
+        <label for="hall">Зал:</label>
+        <select th:field="*{hall}" id="hall">
+            <option th:each="hall : ${halls}"
+                    th:value="${hall.hallId}"
+                    th:text="${hall.hallId}"
+                    th:selected="${session.hall != null && hall.hallId == session.hall.hallId}"></option>
+        </select>
+    </div>
+
+    <div>
+        <label for="date">Дата:</label>
+        <input type="date" th:field="*{date}" id="date" />
+    </div>
+
+    <div>
+        <label for="startTime">Время начала:</label>
+        <input type="time" th:field="*{startTime}" id="startTime" />
+    </div>
+
+    <div>
+        <label for="cost">Стоимость:</label>
+        <input type="number" th:field="*{cost}" id="cost" step="0.01" min="0" />
+    </div>
+
+    <!-- Сообщения об успехе или ошибке -->
+    <div th:if="${success}" style="color: green;">${success}</div>
+    <div th:if="${error}" style="color: red;">${error}</div>
+
+    <button type="submit">Обновить сеанс</button>
+</form>
+
+<a href="/sessions">Назад к списку сеансов</a>
+
+</body>
+</html>
+
+
+
+

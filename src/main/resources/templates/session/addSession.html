@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Добавить сеанс</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<h1>Добавить новый сеанс</h1>
+
+<form th:action="@{/sessions/add}" th:object="${session}" method="post">
+  <div>
+    <label for="film">Фильм:</label>
+    <select id="film" th:field="*{film}" required>
+      <option value="" disabled selected>Выберите фильм</option>
+      <option th:each="film : ${films}"
+              th:value="${film.filmId}"
+              th:text="${film.name}"></option>
+    </select>
+  </div>
+
+  <div>
+    <label for="hall">Зал:</label>
+    <select id="hall" th:field="*{hall}" required>
+      <option value="" disabled selected>Выберите зал</option>
+      <option th:each="hall : ${halls}"
+              th:value="${hall.hallId}"
+              th:text="${hall.hallId}"></option>
+    </select>
+  </div>
+
+  <div>
+    <label for="date">Дата:</label>
+    <input type="date" id="date" th:field="*{date}" required/>
+  </div>
+
+  <div>
+    <label for="startTime">Время начала:</label>
+    <input type="time" id="startTime" th:field="*{startTime}" required/>
+  </div>
+
+  <div>
+    <label for="cost">Стоимость:</label>
+    <input type="number" id="cost" th:field="*{cost}" required min="0"/>
+  </div>
+
+  <button type="submit">Добавить</button>
+</form>
+
+<a href="/sessions">Назад к списку сеансов</a>
+
+</body>
+</html>

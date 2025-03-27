@@ -90,7 +90,7 @@ public class FilmController {
                         genreService.createGenre(newGenreObj);
                         return newGenreObj;
                     });
-                film.getGenres().add(genre);
+            film.getGenres().add(genre);
         }
         if (newDirector != null && !newDirector.trim().isEmpty()) {
             Director director = directorService.findByName(newDirector)

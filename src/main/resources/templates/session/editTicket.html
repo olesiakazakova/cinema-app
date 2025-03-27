@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Редактирование билета</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<nav>
+  <a href="/films">Фильмы</a>
+  <a href="/sessions">Сеансы</a>
+  <a href="/tickets">Билеты</a>
+  <a href="/users">Пользователи</a>
+</nav>
+<h1>Редактирование билета</h1>
+<form th:action="@{/tickets/edit}" th:object="${ticket}" method="post">
+  <input type="hidden" th:field="*{ticketId}" />
+
+  <label>Пользователь:</label>
+  <select id="user" th:field="*{user.email}" required>
+    <option value="" disabled selected>Выберите пользователя</option>
+    <option th:each="user : ${users}"
+            th:value="${user.email}"
+            th:text="${user.name}"></option>
+  </select>
+
+  <label>Сеанс:</label>
+  <select id="cinemaSession" th:field="*{session}" required>
+    <option value="" disabled>Выберите сеанс</option>
+    <option th:each="cinemaSession, iterStat : ${cinemaSessions}"
+            th:value="${cinemaSession.sessionId}"
+            th:text="${cinemaSession.film != null ? cinemaSession.film.name : 'Не указано'} +
+                      ' - ' + ${cinemaSession.date != null ? cinemaSession.date : 'Не указано'} +
+                      ' ' + ${formattedStartTimes[iterStat.index] != null ? formattedStartTimes[iterStat.index] : 'Не указано'} +
+                      ' - Зал: ' + ${cinemaSession.hall != null ? cinemaSession.hall.hallId : 'Не указано'}">
+    </option>
+  </select>
+
+  <label>Ряд:</label>
+  <input type="number" th:field="*{row}" required min="1" />
+
+  <label>Место:</label>
+  <input type="number" th:field="*{seat}" required min="1" />
+
+  <label>Скидка:</label>
+  <select id="discount" th:field="*{discount}">
+    <option value="" disabled selected>Выберите скидку</option>
+    <option th:each="discountType : ${T(com.example.cinema.cinema_app.DiscountType).values()}"
+            th:value="${discountType}"
+            th:text="${discountType.getLabel()}"></option>
+  </select>
+
+  <button type="submit">Сохранить изменения</button>
+</form>
+
+</body>
+</html>

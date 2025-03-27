@@ -6,6 +6,12 @@
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+<nav>
+  <a href="/films">Фильмы</a>
+  <a href="/sessions">Сеансы</a>
+  <a href="/tickets">Билеты</a>
+  <a href="/users">Пользователи</a>
+</nav>
 <h1>Редактирование актера</h1>
 <form th:action="@{/actors/edit}" th:object="${actor}" method="post">
 <input type="hidden" th:name="actorId" th:value="${actor.actorId}"/>
@@ -20,7 +26,6 @@
     <a href="/actors">Отмена</a>
   </div>
 </form>
-
 </body>
 </html>
 
