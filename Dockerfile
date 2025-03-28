@@ -1,5 +1,3 @@
-RUN mvn clean package
-
 # Используем официальный образ Maven с Java как базовый
 FROM maven:3.9.9-eclipse-temurin-17
 
@@ -27,6 +25,7 @@ ENV PORT 8080
 
 # Запускаем приложение
 CMD ["java", "-jar", "app.jar", "--server.port=${PORT}"]
+
 
 
 
