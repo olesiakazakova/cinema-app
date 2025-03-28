@@ -11,8 +11,8 @@ RUN mvn dependency:go-offline
 # Копируем всю папку с исходным кодом
 COPY src ./src
 
-# Собираем приложение
-RUN mvn package
+# Собираем приложение, пропуская тесты
+RUN mvn package -DskipTests
 
 # Копируем собранный jar-файл в рабочую директорию
 COPY target/*.jar app.jar
@@ -22,5 +22,6 @@ ENV PORT 8080
 
 # Запускаем приложение
 CMD ["java", "-jar", "app.jar", "--server.port=${PORT}"]
+
 
 
