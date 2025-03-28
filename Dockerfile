@@ -11,20 +11,18 @@ RUN mvn dependency:go-offline
 # Копируем всю папку с исходным кодом
 COPY src ./src
 
-# Собираем приложение, пропуская тесты
-RUN mvn package -DskipTests
-
-# Проверяем содержимое папки target
-RUN ls target
+# Собираем приложение, пропуская тесты и проверяем содержимое папки target
+RUN mvn package -DskipTests && ls target  # Проверяем наличие JAR-файла
 
 # Копируем собранный jar-файл в рабочую директорию
-COPY target/cinema-app-0.0.1-SNAPSHOT.jar app.jar
+COPY target/cinema-app-0.0.1-SNAPSHOT.jar app.jar  # Обновите имя файла при необходимости
 
 # Указываем переменную окружения для порта
 ENV PORT 8080
 
 # Запускаем приложение
 CMD ["java", "-jar", "app.jar", "--server.port=${PORT}"]
+
 
 
 
