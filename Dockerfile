@@ -15,7 +15,7 @@
      RUN mvn package -DskipTests && ls -l target  # Проверяем наличие JAR-файла
 
      # Копируем собранный jar-файл в рабочую директорию
-     COPY target/cinema-app-0.0.1-SNAPSHOT.jar.original  # Обновите имя файла при необходимости
+     COPY target/cinema-app-0.0.1-SNAPSHOT.jar app.jar # Обновите имя файла при необходимости
 
      # Указываем переменную окружения для порта
      ENV PORT 8080
