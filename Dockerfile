@@ -1,5 +1,5 @@
 # Используем официальный образ Maven с Java как базовый
-FROM maven:3.8.7-openjdk-17-slim
+FROM maven:3.8.6-openjdk-17-slim
 
 # Устанавливаем рабочую директорию
 WORKDIR /app
