@@ -15,7 +15,7 @@ COPY src ./src
 RUN mvn package -DskipTests && ls target  # Проверяем наличие JAR-файла
 
 # Копируем собранный jar-файл в рабочую директорию
-COPY target/*.jar app.jar
+COPY *.jar app.jar
 
 # Указываем переменную окружения для порта
 ENV PORT 8080
