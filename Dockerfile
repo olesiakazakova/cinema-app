@@ -1,3 +1,5 @@
+RUN mvn clean package
+
 # Используем официальный образ Maven с Java как базовый
 FROM maven:3.9.9-eclipse-temurin-17
 
@@ -18,7 +20,7 @@ RUN mvn package -DskipTests
 RUN ls target
 
 # Копируем собранный jar-файл в рабочую директорию
-COPY target/cinema-app-0.0.1-SNAPSHOT.jar app.jar
+COPY target/*.jar app.jar
 
 # Указываем переменную окружения для порта
 ENV PORT 8080
