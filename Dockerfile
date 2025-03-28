@@ -15,6 +15,7 @@ COPY src ./src
 RUN mvn package -DskipTests
 
 # Копируем собранный jar-файл в рабочую директорию
+# Обратите внимание, что нужно использовать правильный путь
 COPY target/*.jar app.jar
 
 # Указываем переменную окружения для порта
@@ -22,6 +23,7 @@ ENV PORT 8080
 
 # Запускаем приложение
 CMD ["java", "-jar", "app.jar", "--server.port=${PORT}"]
+
 
 
 
